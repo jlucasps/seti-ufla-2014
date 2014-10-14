@@ -98,8 +98,16 @@
 								<p>JavaScript Developer</p>
 							</li>
 							<li class="fragment roll-in">
-								<p>Web Performance Optimization #wpo </p>
-							</li>
+	              <code>
+	                <a href="http://twitter.com/jlucasps" target="_blank">twitter</a> |
+	                <a href="http://github.com/jlucasps" target="_blank">github</a> |
+	                <a href="http://facebook.com/jlucasps" target="_blank">fb</a> |
+	                <a href="mailto:jlucasps@gmail.com">gtalk</a> : jlucasps
+	              </code>
+	            </li>
+	            <li class="fragment roll-in">
+	              <a href="http://br.linkedin.com/in/jlucasps" target="_blank">linkedin.com/in/jlucasps</a>
+	            </li>
 						</ul>
 					</section>
 				</section>
@@ -144,7 +152,7 @@
 						<h3>Histórico</h3>
 						<p>
 							<q cite="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/382">
-								"So, I decided to make it."
+								"So, I decided to make it." <small>Matz</small>
 							</q>
 						</p>
 						<p class="fragment roll-in">
@@ -153,20 +161,84 @@
 						<p class="fragment roll-in">
 							<q cite="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/382">
 								"It took several months to make the interpreter run. [...] <br/>
-								I posted Ruby 0.95 to the Japanese domestic newsgroups in Dec. 1995. "
+								I posted Ruby 0.95 to the Japanese domestic newsgroups in Dec. 1995. " <small>Matz</small>
 							</q>
 						</p>
 					</section>
 				</section>
 
 				<section>
-					<h3>Everything is a object</h3>
-					<pre><code class="ruby">
+					<section>
+						<h3>Everything is a object</h3>
+						<pre><code class="ruby">
 4.even?                     # => true
 3.upto(8).to_a              # => [3, 4, 5, 6, 7, 8]
-"A string literal".length   # => 16
-					</code></pre>
+"A string literal".length()   # => 16
+						</code></pre>
+					</section>
+					<section>
+						<h3>Everything is a object</h3>
+						<pre><code class="ruby">
+[].methods
+=> [:inspect, :to_s, :to_a, :to_ary, :frozen?, :==, :eql?, :hash, :[],
+:[]=, :at, :fetch, :first, :last, :concat, :<<, :push, :pop, :shift,
+:unshift, :insert, :each, :each_index, :reverse_each, :length, :size,
+:empty?, :find_index, .... ]
+						</code></pre>
+					</section>
+					<section>
+						<h3>Everything is a object</h3>
+						<pre><code class="ruby">
+10.methods
+ => [:to_s, :inspect, :-@, :+, :-, :*, :/, :div, :%, :modulo, :divmod, :fdiv,
+ :**, :abs, :magnitude, :==, :===, :<=>, :>, :>=, :<, :<=, :~, :&, :|, :^,
+ :[], :<<, :>>, :to_f, :size, :zero?, :odd?, :even?, :succ, :integer?,
+ :upto, :downto, :times, :next, :pred, :chr, :ord, :to_i, :to_int, :floor,
+ :ceil, :truncate, :round, :gcd, :lcm, :gcdlcm, :numerator, :denominator,
+ :to_r, :rationalize, :singleton_method_added, :coerce, :i, :+@, :eql?, ... ]
+						</code></pre>
+					</section>
+					<section>
+						<h3>Everything is a object</h3>
+						<pre><code class="ruby">
+true.class
+ => TrueClass
+1.4.class
+ => Float
+'1+3i'.to_c.class
+ => Complex
+ '1+3i'.to_c.class.ancestors
+ => [Complex, Numeric, Comparable, Object, Kernel, BasicObject]
+ '1+3i'.to_c.class
+ => Complex
+'1+3i'.to_c.class.class
+ => Class
+						</code></pre>
+					</section>
 				</section>
+
+				<section>
+						<section>
+							<h3>Metaprogramming</h3>
+							<pre class="fragment roll-in"><code class="ruby">
+class Car
+
+end
+car = Car.new
+car.run # undefined method `run' for #&lt;Car:0x00000001c8d970&gt; (NoMethodError)
+							</code></pre>
+							<pre class="fragment roll-in"><code class="ruby">
+def car.run
+  puts "wooowww Car running now!"
+end
+car.run # wooowww Car running now!
+							</code></pre>
+							<pre class="fragment roll-in"><code class="ruby">
+car2 = Car.new
+car2.run # undefined method `run' for #&lt;Car:0x00000002292898&gt; (NoMethodError)
+						</code></pre>
+						</section>
+					</section>
 
 			</div> <!-- slides -->
 		</div> <!-- review -->
