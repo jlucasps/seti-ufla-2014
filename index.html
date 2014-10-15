@@ -98,16 +98,16 @@
 								<p>JavaScript Developer</p>
 							</li>
 							<li class="fragment roll-in">
-	              <code>
-	                <a href="http://twitter.com/jlucasps" target="_blank">twitter</a> |
-	                <a href="http://github.com/jlucasps" target="_blank">github</a> |
-	                <a href="http://facebook.com/jlucasps" target="_blank">fb</a> |
-	                <a href="mailto:jlucasps@gmail.com">gtalk</a> : jlucasps
-	              </code>
-	            </li>
-	            <li class="fragment roll-in">
-	              <a href="http://br.linkedin.com/in/jlucasps" target="_blank">linkedin.com/in/jlucasps</a>
-	            </li>
+								<code contenteditable>
+									<a href="http://twitter.com/jlucasps" target="_blank">twitter</a> |
+									<a href="http://github.com/jlucasps" target="_blank">github</a> |
+									<a href="http://facebook.com/jlucasps" target="_blank">fb</a> |
+									<a href="mailto:jlucasps@gmail.com">gtalk</a> : jlucasps
+								</code>
+							</li>
+							<li class="fragment roll-in">
+								<a href="http://br.linkedin.com/in/jlucasps" target="_blank">linkedin.com/in/jlucasps</a>
+							</li>
 						</ul>
 					</section>
 				</section>
@@ -170,7 +170,7 @@
 				<section>
 					<section>
 						<h3>Everything is a object</h3>
-						<pre><code class="ruby">
+						<pre><code contenteditable class="ruby">
 4.even?                     # => true
 3.upto(8).to_a              # => [3, 4, 5, 6, 7, 8]
 "A string literal".length()   # => 16
@@ -178,7 +178,7 @@
 					</section>
 					<section>
 						<h3>Everything is a object</h3>
-						<pre><code class="ruby">
+						<pre><code contenteditable class="ruby">
 [].methods
 => [:inspect, :to_s, :to_a, :to_ary, :frozen?, :==, :eql?, :hash, :[],
 :[]=, :at, :fetch, :first, :last, :concat, :<<, :push, :pop, :shift,
@@ -188,7 +188,7 @@
 					</section>
 					<section>
 						<h3>Everything is a object</h3>
-						<pre><code class="ruby">
+						<pre><code contenteditable class="ruby">
 10.methods
  => [:to_s, :inspect, :-@, :+, :-, :*, :/, :div, :%, :modulo, :divmod, :fdiv,
  :**, :abs, :magnitude, :==, :===, :<=>, :>, :>=, :<, :<=, :~, :&, :|, :^,
@@ -200,46 +200,320 @@
 					</section>
 					<section>
 						<h3>Everything is a object</h3>
-						<pre><code class="ruby">
+						<pre><code contenteditable class="ruby" data-trim>
 true.class
  => TrueClass
 1.4.class
  => Float
+ 						</code></pre>
+						<pre class="fragment roll-in"><code contenteditable class="ruby" data-trim>
 '1+3i'.to_c.class
  => Complex
  '1+3i'.to_c.class.ancestors
  => [Complex, Numeric, Comparable, Object, Kernel, BasicObject]
- '1+3i'.to_c.class
- => Complex
+ 						</code></pre>
+						<pre class="fragment roll-in"><code contenteditable class="ruby" data-trim>
 '1+3i'.to_c.class.class
  => Class
 						</code></pre>
 					</section>
+					<section>
+						<h3>Ruby code conventions</h3>
+						Nome das classes UpperCamelCase
+						<pre><code contenteditable class="ruby" data-trim>
+class InfoCompMagazine
+  # ...
+end
+ 						</code></pre>
+ 						Métodos e variáveis usam snake_case
+						<pre><code contenteditable class="ruby" data-trim>
+def number_of_pages 
+  # some code here ...
+end
+def web_magazine?
+  # more code ...
+end
+def change_folder!
+  # code code code ...
+end
+ 						</code></pre>
+					</section>
+					<section>
+						<h3>Ruby classes</h3>
+						<pre><code contenteditable class="ruby" data-trim>
+class Book
+  def initialize(title)
+    @title = title
+  end
+
+  def title
+    @title
+  end
+end
+ 						</code></pre>
+					</section>
+					<section>
+						<h3>Ruby classes</h3>
+						<pre><code contenteditable class="ruby">
+book = Book.new "Eloquent Ruby"
+puts book.title # "Eloquent Ruby"
+puts book.send :title # "Eloquent Ruby"
+ 						</code></pre>
+ 						<pre class="fragment roll-in"><code contenteditable class="ruby">
+book = Book.new( "Eloquent Ruby" ) 
+puts book.title() # "Eloquent Ruby"
+puts book.send( :title ) # "Eloquent Ruby"
+ 						</code></pre>
+					</section>
+					<section>
+						<h3>Variáveis</h3>
+						<pre><code data-trim contenteditable class="ruby">
+class Magazine
+  MAX_PAGES = 30 # contants
+end
+						</code></pre>
+						<pre class="fragment roll-in"><code data-trim contenteditable class="ruby">
+class Magazine
+  def initialize
+    @max_pages = 30 # instance variable
+  end
+end
+						</code></pre>
+						<pre class="fragment roll-in"><code data-trim contenteditable class="ruby">
+class Magazine
+  @@max_pages = 30 # class variable
+  def initialize
+    # ...
+  end
+end
+						</code></pre>
+					</section>
+					<section>
+						<h3>Ruby e "Modo Poesia"</h3>
+						<p><small>Armando Fox, University of California, Berkeley </small></p>
+						<pre><code contenteditable class="ruby">
+def print_user_info( info )
+  puts "Info about user:"
+  info.each_pair { |key, value| puts "#{key}: #{value}" }
+end
+print_user_info( { name: "Joao lucas", email: "jlucasps@gmail.com" } )
+# Info about user:
+# name: Joao lucas
+# email: jlucasps@gmail.com
+ 						</code></pre>
+ 						<pre class="fragment roll-in"><code contenteditable class="ruby">
+print_user_info( name: "Joao lucas", email: "jlucasps@gmail.com" )
+
+print_user_info name: "Joao lucas", email: "jlucasps@gmail.com"
+ 						</code></pre>
+					</section>
+					<section>
+						<h3>Ruby e "Modo Poesia"</h3>
+						<p><small>Armando Fox, University of California, Berkeley </small></p>
+						<pre><code contenteditable class="ruby">
+user.age.should(be() >= 18)
+user.age.should be >= 18
+ 						</code></pre>
+ 						<pre class="fragment roll-in"><code contenteditable class="ruby">
+if !logged_in?() # unless logged_in?()
+  ( redirect_to( login_page() ) ) and return()
+end
+# ...
+( redirect_to( login_page() ) ) and return() unless logged_in?()
+# ...
+redirect_to login_page and return unless logged_in?
+ 						</code></pre>
+					</section>
 				</section>
 
 				<section>
-						<section>
-							<h3>Metaprogramming</h3>
-							<pre class="fragment roll-in"><code class="ruby">
+					<section>
+						<h3>Metaprogramming</h3>
+						<pre class="fragment roll-in"><code contenteditable class="ruby" data-trim>
 class Car
 
 end
 car = Car.new
 car.run # undefined method `run' for #&lt;Car:0x00000001c8d970&gt; (NoMethodError)
-							</code></pre>
-							<pre class="fragment roll-in"><code class="ruby">
+						</code></pre>
+						<pre class="fragment roll-in"><code contenteditable class="ruby" data-trim>
+# singleton method
 def car.run
   puts "wooowww Car running now!"
 end
 car.run # wooowww Car running now!
-							</code></pre>
-							<pre class="fragment roll-in"><code class="ruby">
+						</code></pre>
+						<pre class="fragment roll-in"><code contenteditable class="ruby" data-trim>
 car2 = Car.new
 car2.run # undefined method `run' for #&lt;Car:0x00000002292898&gt; (NoMethodError)
-						</code></pre>
-						</section>
+					</code></pre>
 					</section>
+					<section>
+						<h3>Metaprogramming</h3>
+						<pre><code contenteditable class="ruby" data-trim>
+class User
+  attr_accessor :name, :age, :city
+  def initialize name, age, city 
+    @name, @age, @city = name, age, city
+  end
+end
+user = User.new "João Lucas", 25, "BH"
+puts "#{user.name}, #{user.age()} years old, from #{user.city}."
+puts user.move( "BH", "POA" )
+						</code></pre>
+						<pre class="fragment roll-in"><code contenteditable class="ruby" data-trim>
+# Joao Lucas, 25 years old, from BH.
+# undefined method `move' for #&lt;User:0x994cee8 @name="João Lucas", @age=25, @city="BH"&gt; (NoMethodError)
+						</code></pre>
+					</section>
+					<section>
+						<h3>Metaprogramming</h3>
+						<pre><code contenteditable class="ruby" data-trim>
+class User
+  def method_missing( method, *args, &block)
+    puts "ops.. you can not call #{method}(..) with params #{args.to_a} right now."
+    puts "Try next week! :-D"
+  end
+end
+puts user.move( "BH", "POA" )
+						</code></pre>
+						<pre class="fragment roll-in"><code contenteditable class="ruby" data-trim>
+# Joao Lucas, 25 years old, from BH.
+# ops.. you can not call move(..) with params ["BH", "POA"] right now.
+# Try next week! :-D
+						</code></pre>
+					</section>
+					<section>
+						<h3>Metaprogramming</h3>
+						<pre><code contenteditable class="ruby" data-trim>
+class User
+  MOVE_OPTIONS = [:trip, :travel, :move, :go]
 
+  MOVE_OPTIONS.each do | name |
+    define_method( name ) do | *args |
+      puts "Method #{name}(..) called with args #{args.inspect}"
+    end
+  end
+end
+puts user.move( "BH", "POA" )
+						</code></pre>
+						<pre class="fragment roll-in"><code contenteditable class="ruby" data-trim>
+# Method move(..) called with args ["BH", "POA"]
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<h3>Tools, libs, frameworks</h3>
+					<small>
+						<ul>
+							<li> <a href="http://activeadmin.info/" target="_blank">ActiveAdmin</a></li>
+							<li> <a href="https://github.com/rails-api/rails-api" target="_blank">Rails::API</a></li>
+							<li> <a href="http://sass-lang.com/" target="_blank">Sass</a></li>
+							<li> <a href="https://github.com/plataformatec/devise" target="_blank">Devise</a></li>
+							<li> <a href="https://github.com/CanCanCommunity/cancancan" target="_blank">CanCanCan</a></li>
+							<li> <a href="https://github.com/mperham/dalli" target="_blank">Dalli</a></li>
+							<li> <a href="https://github.com/jimweirich/rake" target="_blank">Rake</a></li>
+							<li> <a href="http://www.locomotivecms.com/" target="_blank">LocomotiveCMS</a></li>
+							<li> <a href="https://github.com/metricfu/metric_fu" target="_blank">MetricFu</a></li>
+						</ul>
+						<ul>
+							<li> <a href="https://github.com/markets/awesome-ruby#database-drivers" target="_blank">Drivers SQL/noSQL</a></li>
+							<li> <a href="http://www.vagrantup.com/" target="_blank">Vagrant</a></li>
+							<li> <a href="https://rvm.io/" target="_blank">RVM</a></li>
+							<li> <a href="https://github.com/plataformatec/simple_form" target="_blank">Simple Form</a></li>
+							<li> <a href="http://nokogiri.org/" target="_blank">Nokogiri</a></li>
+							<li> <a href="https://github.com/alexreisner/geocoder" target="_blank">Geocoder</a></li>
+							<li> <a href="https://github.com/rmagick/rmagick" target="_blank">RMagick</a></li>
+							<li> <a href="https://github.com/svenfuchs/i18n" target="_blank">i18n</a></li>
+							<li> <a href="http://www.rubymotion.com/" target="_blank">RubyMotion</a></li>
+						</ul>
+						<ul>
+							<li> <a href="https://github.com/rails/rails/tree/master/activerecord" target="_blank">ActiveRecord</a></li>
+							<li> <a href="http://bundler.io/" target="_blank">Bundler</a></li>
+							<li> <a href="https://github.com/mislav/will_paginate" target="_blank">will_paginate</a></li>
+							<li> <a href="https://github.com/pdfkit/pdfkit" target="_blank">Pdfkit</a></li>
+							<li> <a href="https://github.com/collectiveidea/delayed_job" target="_blank">Delayed::Job</a></li>
+							<li> <a href="https://github.com/rspec/rspec" target="_blank">RSpec</a></li>
+							<li> <a href="https://github.com/thoughtbot/factory_girl" target="_blank">factory_girl</a></li>
+							<li> <a href="http://jnicklas.github.io/capybara" target="_blank">Capybara</a></li>
+							<li> <a href="http://rubyonrails.org/" target="_blank">Ruby on Rails</a></li>
+						</ul>
+					</small>
+					<p><small>
+						<a href="https://github.com/markets/awesome-ruby">github.com/markets/awesome-ruby</a><br/>
+						<a href="https://github.com/bayandin/awesome-awesomeness">github.com/bayandin/awesome-awesomeness</a>
+					</small></p>
+				</section>
+
+				<section>
+					<section>
+						<h3>High traffic sites built in Ruby on Rails</h3>
+						<p><small>
+							<a href="http://www.quora.com/What-are-some-highly-trafficked-sites-built-in-Ruby-on-Rails">quora.com/What-are-some-highly-trafficked-sites-built-in-Ruby-on-Rails</a>
+						</small></p>
+						<ul>
+							<li> <a href="http://twitter.com/" target="_blank">Twitter</a></li>
+							<li> <a href="http://slideshare.net/" target="_blank">SlideShare</a></li>
+							<li> <a href="http://www.hulu.com/" target="_blank">hulu.com</a></li>
+							<li> <a href="http://www.whitepages.com/" target="_blank">White Pages</a></li>
+							<li> <a href="http://www.shopify.com/" target="_blank">Shopify</a></li>
+							<li> <a href="http://yellowpages.com/" target="_blank">Yellow Pages</a></li>
+						</ul>
+						<ul>
+							<li> <a href="https://github.com/" target="_blank">Github</a></li>
+							<li> <a href="http://groupon.com/" target="_blank">Groupon</a></li>
+							<li> <a href="http://www.justin.tv/" target="_blank">JustinTV</a></li>
+							<li> <a href="https://basecamp.com/" target="_blank">Basecamp</a></li>
+							<li> <a href="http://www.browserstack.com/" target="_blank">BrowserStack</a></li>
+							<li> <a href="http://ask.fm/" target="_blank">Ask.fm</a></li>
+						</ul>
+						<ul>
+							<li> <a href="http://8tracks.com/" target="_blank">8tracks</a></li>
+							<li> <a href="https://soundcloud.com/" target="_blank">Soundcloud</a></li>
+							<li> <a href="http://urbandictionary.com/" target="_blank">Urban Dictionary</a></li>
+							<li> <a href="http://scribd.com/" target="_blank">Scribd</a></li>
+							<li> <a href="https://www.yammer.com/" target="_blank">Yammer</a></li>
+							<li> <a href="https://www.uservoice.com/" target="_blank">UserVoice</a></li>
+						</ul>
+					</section>
+					<section>
+						<h3>Learn Ruby</h3>
+						<p>
+							<a href="https://www.codeschool.com/" target="_blank">
+								<img src="./img/brand-horizontal-tagline-light-e591f34f0f78328dfc758cb873133d31.png" width="400px">
+							</a>
+						</p>
+						<p>
+							<a href="http://www.codecademy.com/" target="_blank">
+								<img src="./img/logo--dark-blue-bf11002ce1caecdfb9fec8d3286b8a8d.svg" width="400px">
+							</a>
+						</p>
+						<p>
+							<a href="http://ruby.learncodethehardway.org/book/" target="_blank">
+								<img src="./img/ruby-hard-way-sprite.png" width="400px">
+							</a>
+						</p>
+					</section>
+					<section>
+						<h3>Learn Ruby</h3>
+						<p>
+							<a href="https://www.coursera.org/" target="_blank">
+								<img src="./img/coursera-logo.png" width="400px">
+							</a>
+						</p>
+						<p>
+							<a href="https://www.udacity.com/" target="_blank">
+								<img src="./img/Udacity_logo_horz_orangeWithTagline_800x328.png" width="400px">
+							</a>
+						</p>
+						<p>
+							<a href="https://www.edx.org/" target="_blank">
+								<img src="./img/599348_315524638578905_257490154_n.png" width="400px">
+							</a>
+						</p>
+					</section>
+				</section>
 			</div> <!-- slides -->
 		</div> <!-- review -->
 
