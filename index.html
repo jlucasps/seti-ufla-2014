@@ -321,7 +321,7 @@ end
 # ...
 ( redirect_to( login_page() ) ) and return() unless logged_in?()
 # ...
-redirect_to login_page and return unless logged_in?
+( redirect_to login_page and return ) unless logged_in?
  						</code></pre>
 					</section>
 				</section>
@@ -372,7 +372,7 @@ puts user.move( "BH", "POA" )
 class User
   def method_missing( method, *args, &block)
     puts "ops.. you can not call #{method}(..) with params #{args.to_a} right now."
-    puts "Try next week! :-D"
+    puts "Try again next week! :-D"
   end
 end
 puts user.move( "BH", "POA" )
@@ -380,7 +380,7 @@ puts user.move( "BH", "POA" )
 						<pre class="fragment roll-in"><code contenteditable class="ruby" data-trim>
 # Joao Lucas, 25 years old, from BH.
 # ops.. you can not call move(..) with params ["BH", "POA"] right now.
-# Try next week! :-D
+# Try again next week! :-D
 						</code></pre>
 					</section>
 					<section>
@@ -513,6 +513,16 @@ puts user.move( "BH", "POA" )
 							</a>
 						</p>
 					</section>
+				</section>
+				<section>
+					<h1>Ruby</h1>
+					<h3>Como programar, em uma linguagem legal</h3>
+					<p>
+						<small>Semana de Tecnologia da Informação - SETI UFLA</small>
+						<br/>
+						<small>João Lucas P Santana - <a href="http://jlucasps.github.io/" target="_blank" >@jlucasps</a></small>
+					</p>
+					<h3>Obrigado!</h3>
 				</section>
 			</div> <!-- slides -->
 		</div> <!-- review -->
