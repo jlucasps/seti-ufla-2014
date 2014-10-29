@@ -218,6 +218,10 @@ true.class
 						</code></pre>
 					</section>
 					<section>
+						<h3>Everything is a object</h3>
+						<img src="./img/9da6d389-06af-4a1b-90dc-fec21af27118.gif">
+					</section>
+					<section>
 						<h3>Ruby code conventions</h3>
 						Nome das classes UpperCamelCase
 						<pre><code contenteditable class="ruby" data-trim>
@@ -227,7 +231,7 @@ end
  						</code></pre>
  						Métodos e variáveis usam snake_case
 						<pre><code contenteditable class="ruby" data-trim>
-def number_of_pages 
+def number_of_pages
   # some code here ...
 end
 def web_magazine?
@@ -237,6 +241,10 @@ def change_folder!
   # code code code ...
 end
  						</code></pre>
+					</section>
+					<section>
+						<h3>Ruby code conventions</h3>
+						<img src="./img/HLVdAbs.gif">
 					</section>
 					<section>
 						<h3>Ruby classes</h3>
@@ -260,9 +268,32 @@ puts book.title # "Eloquent Ruby"
 puts book.send :title # "Eloquent Ruby"
  						</code></pre>
  						<pre class="fragment roll-in"><code contenteditable class="ruby">
-book = Book.new( "Eloquent Ruby" ) 
+book = Book.new( "Eloquent Ruby" )
 puts book.title() # "Eloquent Ruby"
 puts book.send( :title ) # "Eloquent Ruby"
+ 						</code></pre>
+					</section>
+					<section>
+						<h3>Ruby classes</h3>
+						<pre class="fragment roll-in"><code data-trim contenteditable class="java">
+// Java class
+public class Person {
+
+  private int age;
+
+  public int getAge() {
+       return this.age
+  }
+  public void setAge(int age) {
+       this.age = age;
+  }
+}
+ 						</code></pre>
+ 						<pre class="fragment roll-in"><code data-trim contenteditable class="ruby">
+# Ruby class
+class Person
+  attr_accessor :age
+end
  						</code></pre>
 					</section>
 					<section>
@@ -287,6 +318,23 @@ class Magazine
   end
 end
 						</code></pre>
+					</section>
+					<section>
+						<h3>Classes abertas</h3>
+						<pre><code data-trim contenteditable class="ruby">
+class Fixnum
+  def +( num )
+    self - num
+  end
+end
+puts 2 + 3
+						</code></pre>
+						<pre class="fragment roll-in"><code data-trim contenteditable class="ruby">
+=> -1
+						</code></pre>
+						<p class="fragment roll-in">
+							<img src="./img/YLS1ufH.gif">
+						</p>
 					</section>
 					<section>
 						<h3>Ruby e "Modo Poesia"</h3>
@@ -319,7 +367,7 @@ if !logged_in?() # unless logged_in?()
   ( redirect_to( login_page() ) ) and return()
 end
 # ...
-( redirect_to( login_page() ) ) and return() unless logged_in?()
+( redirect_to( login_page() ) and return() ) unless logged_in?()
 # ...
 ( redirect_to login_page and return ) unless logged_in?
  						</code></pre>
@@ -353,7 +401,7 @@ car2.run # undefined method `run' for #&lt;Car:0x00000002292898&gt; (NoMethodErr
 						<pre><code contenteditable class="ruby" data-trim>
 class User
   attr_accessor :name, :age, :city
-  def initialize name, age, city 
+  def initialize name, age, city
     @name, @age, @city = name, age, city
   end
 end

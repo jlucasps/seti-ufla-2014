@@ -44,14 +44,14 @@
 
 
 
-class User
-    attr_accessor :name, :age, :city
-    def initialize name, age, city 
-        @name, @age, @city = name, age, city
-    end
-end
-user = User.new "João Lucas", 25, "BH"
-puts "#{user.name}, #{user.age()} years old, from #{user.city}."
+# class User
+#     attr_accessor :name, :age, :city
+#     def initialize name, age, city
+#         @name, @age, @city = name, age, city
+#     end
+# end
+# user = User.new "João Lucas", 25, "BH"
+# puts "#{user.name}, #{user.age()} years old, from #{user.city}."
 
 
 # class User
@@ -63,25 +63,24 @@ puts "#{user.name}, #{user.age()} years old, from #{user.city}."
 
 # puts user.move( "BH", "POA" )
 
-class User
-    MOVE_OPTIONS = [:trip, :travel, :move, :go]
+# class User
+#     MOVE_OPTIONS = [:trip, :travel, :move, :go]
 
-    MOVE_OPTIONS.each do | name |
-        define_method( name ) do | *args |
-            puts "Method #{name}(..) called with args #{args.inspect}"
-        end
-    end
+#     MOVE_OPTIONS.each do | name |
+#         define_method( name ) do | *args |
+#             puts "Method #{name}(..) called with args #{args.inspect}"
+#         end
+#     end
+# end
+# puts user.move( "BH", "POA" )
+
+
+
+
+class Fixnum
+  def +( num )
+    self - num
+  end
 end
-puts user.move( "BH", "POA" )
 
-
-
-
-
-
-
-
-
-
-# Suzanne DiBianca ‏@SuzanneDiBianca  1m1 minute ago
-# 1M jobs potentially unfulfilled by 2020 says @hadip of @codeorg if we don't focus on computer science in schools. 
+puts 2 + 3

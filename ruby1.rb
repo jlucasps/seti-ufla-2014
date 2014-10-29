@@ -33,6 +33,8 @@ class User
 end
 
 user = User.new "JL", 25, "BH"
-user.age = 12 
+user.age=( 12 )
+user.age= 13
+user.age = 14
 puts user.city
 puts user.inspect
